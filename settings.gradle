@@ -1,0 +1,3 @@
+include ':snoweffect'
+include ':app'
+rootProject.name = "Snow Effect"
