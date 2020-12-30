@@ -31,9 +31,9 @@ public class SnowEffect extends RelativeLayout {
     // 0 -> element always in background
     // 1 -> element always in foreground
     // 2 -> element in background and foreground
-    private static final int ELEMENT_IN_BACKGROUND = 0;
-    private static final int ELEMENT_IN_FOREGROUND = 1;
-    private static final int ELEMENT_IN_BOTH = 2;
+    public static final int ELEMENT_IN_BACKGROUND = 0;
+    public static final int ELEMENT_IN_FOREGROUND = 1;
+    public static final int ELEMENT_IN_BOTH = 2;
 
     //Element speed constants
     private static final float ELEMENT_SPEED_MIN = 5;
@@ -112,7 +112,7 @@ public class SnowEffect extends RelativeLayout {
     }
 
     /**
-     * Start showing snow effect with duration
+     * Start showing snow effect with duration (ms)
      *
      * @param duration of snowing effect
      */
@@ -129,7 +129,7 @@ public class SnowEffect extends RelativeLayout {
             public void run() {
                 addSnowElement();
 
-                if(++factCount[0] == count){
+                if(++factCount[0] == count || !isFalling){
                     isFalling = false;
 
                     return;
@@ -154,9 +154,32 @@ public class SnowEffect extends RelativeLayout {
             public void run() {
                 addSnowElement();
 
-                handler.postDelayed(this, elementShowSpeed);
+                if(isFalling)
+                    handler.postDelayed(this, elementShowSpeed);
             }
         });
+    }
+
+    /**
+     * Stop showing effect smoothly
+     */
+    public void stopShowing(){
+        isFalling = false;
+    }
+
+    /**
+     * Stop showing effect immediately
+     */
+    public void stopShowingNow(){
+        isFalling = false;
+        int count = getChildCount();
+
+        for(int i = 0; i < count; i++){
+            View view = getChildAt(i);
+
+            if(view instanceof SnowEffectElement)
+                removeView(view);
+        }
     }
 
     /**
@@ -169,7 +192,18 @@ public class SnowEffect extends RelativeLayout {
     }
 
     /**
-     * Set element falling speed
+     * Set element location on screen
+     *
+     * @param location 0 -> element always in background
+     *                 1 -> element always in foreground
+     *                 2 -> element in background and foreground
+     */
+    public void setElementShowIn(int location){
+        elementShowIn = location;
+    }
+
+    /**
+     * Set element falling speed (from 0 to 1)
      *
      * @param speed for element
      */
@@ -230,7 +264,7 @@ public class SnowEffect extends RelativeLayout {
         if(!readyToShow)
             return;
 
-        final ImageView image = new ImageView(context);
+        final SnowEffectElement image = new SnowEffectElement(context);
         addView(image);
 
         AnimationSet set = new AnimationSet(false);

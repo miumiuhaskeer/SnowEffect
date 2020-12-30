@@ -8,4 +8,11 @@
     tools:context=".MainActivity"
     android:id="@+id/snowEffect">
 
+    <com.miumiuhaskeer.snoweffect.SnowEffect
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:elementSpeed="1"
+        app:elementShowSpeedMillis="150"
+        app:elementShowIn="foreground"/>
+
 </com.miumiuhaskeer.snoweffect.SnowEffect>
