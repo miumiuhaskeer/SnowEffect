@@ -15,8 +15,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.widget.AppCompatImageView;
-
 import java.util.Random;
 
 /**
@@ -177,7 +175,7 @@ public class SnowEffect extends RelativeLayout {
         for(int i = 0; i < count; i++){
             View view = getChildAt(i);
 
-            if(view instanceof SnowEffectElement)
+            if(view instanceof SnowEffectImage)
                 removeView(view);
         }
     }
@@ -264,7 +262,7 @@ public class SnowEffect extends RelativeLayout {
         if(!readyToShow)
             return;
 
-        final SnowEffectElement image = new SnowEffectElement(context);
+        final SnowEffectImage image = new SnowEffectImage(context);
         addView(image);
 
         AnimationSet set = new AnimationSet(false);
