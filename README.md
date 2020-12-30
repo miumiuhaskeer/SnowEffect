@@ -36,7 +36,7 @@ effect.startShowing();
 ## SnowElement class
 This class was created for define element that will fall. One object contains drawable for element and color for drawable.
 
-## Layout fully customizable
+## Layout fully customized
 ```xml
 <com.miumiuhaskeer.snoweffect.SnowEffect
         android:layout_width="match_parent"
