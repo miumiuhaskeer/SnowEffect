@@ -16,7 +16,7 @@ allprojects {
 Add the dependency
 ```gradle
 dependencies {
-  implementation 'com.github.miumiuhaskeer:SnowEffect:Tag'
+  implementation 'com.github.miumiuhaskeer:SnowEffect:1.0'
 }
 ```
 ## Usage
