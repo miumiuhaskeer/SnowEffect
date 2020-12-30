@@ -168,6 +168,23 @@ public class SnowEffect extends RelativeLayout {
         this.elements = elements;
     }
 
+    /**
+     * Set element falling speed
+     *
+     * @param speed for element
+     */
+    public void setElementSpeed(float speed){
+        if(speed <= 0 || speed > 1) {
+            elementSpeed = ELEMENT_SPEED_DEFAULT;
+
+            return;
+        }
+
+        speed = 1 - speed;
+
+        elementSpeed = ELEMENT_SPEED_MIN + speed * ELEMENT_SPEED_DIF;
+    }
+
     private void init(Context context, AttributeSet attrs){
         this.context = context;
 
@@ -180,23 +197,6 @@ public class SnowEffect extends RelativeLayout {
 
     private void setDuration(){
         duration = (int)(layoutHeight * elementSpeed);
-    }
-
-    /**
-     * Set element falling speed
-     *
-     * @param speed for element
-     */
-    private void setElementSpeed(float speed){
-        if(speed <= 0 || speed > 1) {
-            elementSpeed = ELEMENT_SPEED_DEFAULT;
-
-            return;
-        }
-
-        speed = 1 - speed;
-
-        elementSpeed = ELEMENT_SPEED_MIN + speed * ELEMENT_SPEED_DIF;
     }
 
     /**
