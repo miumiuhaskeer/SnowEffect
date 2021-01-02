@@ -218,18 +218,18 @@ public class SnowEffect extends RelativeLayout {
         elementSpeed = ELEMENT_SPEED_MIN + speed * ELEMENT_SPEED_DIF;
     }
 
-    private void init(Context context, AttributeSet attrs){
-        this.context = context;
-
-        getAttrs(context, attrs);
-    }
-
     public boolean isFalling() {
         return isFalling;
     }
 
     private void setDuration(){
         duration = (int)(layoutHeight * elementSpeed);
+    }
+
+    private void init(Context context, AttributeSet attrs){
+        this.context = context;
+
+        getAttrs(context, attrs);
     }
 
     /**
