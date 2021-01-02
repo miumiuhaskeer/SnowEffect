@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
 public class SnowEffectImage extends AppCompatImageView {
+    
     public SnowEffectImage(@NonNull Context context) {
         super(context);
     }

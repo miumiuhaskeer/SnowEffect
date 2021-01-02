@@ -42,9 +42,10 @@ public class SnowEffect extends RelativeLayout {
     //Element show speed constants (ms)
     private static final int ELEMENT_SHOW_SPEED_MIN = 50;
     private static final int ELEMENT_SHOW_SPEED_MAX = 500;
+    private static final float ELEMENT_SHOW_SPEED_RATIO = 4.5f;
 
     //Changed after onSizeChanged() call
-    private int ELEMENT_SHOW_SPEED_DEFAULT = 150;
+    private int elementShowSpeedDefault = 150;
 
     private static final int ELEMENT_MAX_SIZE = 50;
     private static final int ELEMENT_MIN_SIZE = 20;
@@ -104,7 +105,7 @@ public class SnowEffect extends RelativeLayout {
         layoutWidth = w;
         setDuration();
 
-        ELEMENT_SHOW_SPEED_DEFAULT = (int)(layoutHeight / 4.5);
+        elementShowSpeedDefault = (int)(layoutHeight / ELEMENT_SHOW_SPEED_RATIO);
 
         readyToShow = true;
     }
@@ -119,15 +120,15 @@ public class SnowEffect extends RelativeLayout {
             return;
 
         isFalling = true;
-        int count = duration / elementShowSpeed;
-        final int[] factCount = {0};
+        int maxCount = duration / elementShowSpeed;
+        final int[] count = {0};
 
         handler.post(new Runnable() {
             @Override
             public void run() {
                 addSnowElement();
 
-                if(++factCount[0] == count || !isFalling){
+                if(++count[0] == maxCount || !isFalling){
                     isFalling = false;
 
                     return;
@@ -248,9 +249,9 @@ public class SnowEffect extends RelativeLayout {
         float speed = a.getFloat(R.styleable.SnowEffect_elementSpeed, -1);
         setElementSpeed(speed);
 
-        elementShowSpeed = a.getInt(R.styleable.SnowEffect_elementShowSpeedMillis, ELEMENT_SHOW_SPEED_DEFAULT);
+        elementShowSpeed = a.getInt(R.styleable.SnowEffect_elementShowSpeedMillis, elementShowSpeedDefault);
         if(elementShowSpeed < ELEMENT_SHOW_SPEED_MIN || elementShowSpeed > ELEMENT_SHOW_SPEED_MAX)
-            elementShowSpeed = ELEMENT_SHOW_SPEED_DEFAULT;
+            elementShowSpeed = elementShowSpeedDefault;
 
         a.recycle();
     }
