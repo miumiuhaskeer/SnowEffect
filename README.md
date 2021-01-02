@@ -1,4 +1,6 @@
 # SnowEffect
+[![](https://jitpack.io/v/miumiuhaskeer/SnowEffect.svg)](https://jitpack.io/#miumiuhaskeer/SnowEffect)
+<br><br>
 Customizable snow effect view for Android. You can use custom colors and drawables for elements!
 <br><br>
 <img src="https://github.com/miumiuhaskeer/SnowEffect/blob/master/arts/snow_effect_demonstration.gif" width="221.25" height="480" />
