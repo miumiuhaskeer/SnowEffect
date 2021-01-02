@@ -1,4 +1,6 @@
 # SnowEffect
+[![](https://jitpack.io/v/miumiuhaskeer/SnowEffect.svg)](https://jitpack.io/#miumiuhaskeer/SnowEffect)
+<br><br>
 Customizable snow effect view for Android. You can use custom colors and drawables for elements!
 <br><br>
 <img src="https://github.com/miumiuhaskeer/SnowEffect/blob/master/arts/snow_effect_demonstration.gif" width="221.25" height="480" />
@@ -16,7 +18,7 @@ allprojects {
 Add the dependency
 ```gradle
 dependencies {
-  implementation 'com.github.miumiuhaskeer:SnowEffect:1.0'
+  implementation 'com.github.miumiuhaskeer:SnowEffect:1.0.2'
 }
 ```
 ## Usage
@@ -46,32 +48,25 @@ This class was created for define element that will fall. One object contains dr
         app:elementShowIn="foreground"/>
 ```
 
-## Methods
-```Java
-//Set elements array for snow effect
-setElements(SnowElement... elements)
+## License
+```
+Copyright (c) 2020 miumiuhaskeer
 
-//Start showing snow effect
-void startShowing()
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-//Start showing snow effect with duration (ms)
-void startShowing(int duration)
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-//Stop showing effect smoothly
-void stopShowing()
-
-//Stop showing effect immediately
-void stopShowingNow()
-
-//Set element falling speed (from 0 to 1)
-void setElementSpeed(float speed)
-
-//Set element location on screen
-// 0 -> element always in background
-// 1 -> element always in foreground
-// 2 -> element in background and foreground
-void setElementShowIn(int location)
-
-//Check if Snow Effect is active now
-boolean isFalling()
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
